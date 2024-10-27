@@ -142,6 +142,14 @@
             Prompt injection attacks pose a critical threat to large language models (LLMs), enabling goal hijacking and data leakage. Prompt guard models, though effective in defense, suffer from over-defense—falsely flagging benign inputs as malicious due to trigger word bias. To address this issue, we introduce NotInject, an evaluation dataset that systematically measures over-defense across various prompt guard models. NotInject contains 339 benign samples enriched with trigger words common in prompt injection attacks, enabling fine-grained evaluation. Our results show that state-of-the-art models suffer from over-defense issues, with accuracy dropping close to random guessing levels (60%). To mitigate this, we propose InjecGuard, a novel prompt guard model that incorporates a new training strategy, Mitigating Over-defense for Free (MOF), which significantly reduces the bias on trigger words. InjecGuard demonstrates state-of-the-art performance on diverse benchmarks including NotInject, surpassing the existing best model by 30.8%, offering a robust and open-source solution for detecting prompt injection attacks.
           </p>
         </div>
+        <img class="columns is-centered has-text-centered" src="./static/images/performance.png" alt="Teaser" width="75%"
+        style="margin:0 auto">
+        <br>
+        <figcaption>
+            <p style="text-align: center; color: #061E61;">
+                <b>Figure 1:</b> Comparison on 3 dimensions of benign, malicious, and over-defense accuracy.
+            </p>
+        </figcaption>
       </div>
     </div>
   </div>
@@ -251,6 +259,25 @@
                 </figcaption> -->
             </div>
             <br/>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+            <h4 class="title is-3">• Evaluation</h4>
+            <div class="container is-max-desktop">
+              <div class="hero-body">
+                <center>
+                  <video poster="" id="tree" autoplay controls muted loop width="80%" height="80%">
+                    <!-- Your video here -->
+                    <source src="static/videos/Demo.mp4" type="video/mp4">
+                  </video>
+                </center>
+                <h2 class="subtitle has-text-centered">
+                  A Demo of InjecGuard. 
+                </h2>
+              </div>
+            </div>
         </div>
       </div>
 
