@@ -146,32 +146,49 @@
 
   <!-- Main container -->
   <section class="section">
-    <div class="container">
-      <div class="form-container">
-        <h2 class="title is-4"><span>&#9889;</span> Online Inference</h2> <!-- Reduced title size -->
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-2">Demo</h2>
+        <br>
+      </div>
+      <div class="container">
+        <div class="form-container">
+          <h2 class="title is-4"><span>&#9889;</span> Online Inference (InjecGuard)</h2> <!-- Reduced title size -->
 
-        <!-- Input form -->
-        <form id="inferenceForm">
-          <textarea id="inputText" class="input-text" placeholder="Your sentence here..."></textarea>
-          <button type="submit" class="compute-button" id="computeBtn">Submit</button>
-        </form>
+          <!-- Input form -->
+          <form id="inferenceForm">
+            <textarea id="inputText" class="input-text" placeholder="Your sentence here..."></textarea>
+            <button type="submit" class="compute-button" id="computeBtn">Submit</button>
+          </form>
 
-        <!-- Output display -->
-        <div id="result">
-          <h3 class="title is-5">Result:</h3> <!-- Reduced heading size -->
+          <!-- Output display -->
+          <div id="result">
+            <h3 class="title is-5">Result:</h3> <!-- Reduced heading size -->
 
-          <div class="progress-container" id="benignContainer">
-            <div class="progress-label">Benign</div>
-            <progress class="progress is-info" id="benignProgress" value="0" max="1"></progress>
-            <div class="progress-score" id="benignScore">0.000</div>
-          </div>
+            <div class="progress-container" id="benignContainer">
+              <div class="progress-label">Benign</div>
+              <progress class="progress is-info" id="benignProgress" value="0" max="1"></progress>
+              <div class="progress-score" id="benignScore">0.000</div>
+            </div>
 
-          <div class="progress-container" id="injectionContainer">
-            <div class="progress-label">Injection</div>
-            <progress class="progress is-danger" id="injectionProgress" value="0" max="1"></progress>
-            <div class="progress-score" id="injectionScore">0.000</div>
+            <div class="progress-container" id="injectionContainer">
+              <div class="progress-label">Injection</div>
+              <progress class="progress is-danger" id="injectionProgress" value="0" max="1"></progress>
+              <div class="progress-score" id="injectionScore">0.000</div>
+            </div>
           </div>
         </div>
+      </div>
+      <div class="hero-body">
+        <center>
+          <video poster="" id="tree" autoplay controls muted loop width="80%" height="80%">
+            <!-- Your video here -->
+            <source src="static/videos/Demo.mp4" type="video/mp4">
+          </video>
+        </center>
+        <h2 class="subtitle has-text-centered">
+          A Demo of InjecGuard. 
+        </h2>
       </div>
     </div>
   </section>
@@ -248,7 +265,7 @@
   <div class="container is-max-desktop">
 
       <div class="columns is-centered has-text-centered">
-          <h2 class="title is-2">Overdefense Benchmark——NotInject</h2>
+          <h2 class="title is-2">Overdefense Benchmark: NotInject</h2>
           <br>
       </div>
 
