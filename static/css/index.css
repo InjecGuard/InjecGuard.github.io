@@ -133,5 +133,9 @@ body {
   font-size: smaller;
 }
 
+.video-bordered {
+  border: 5px solid #ff5733;
+  border-radius: 10px;
+}
 
 
