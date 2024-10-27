@@ -3,7 +3,7 @@
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    width: 750px; /* Set width to 100% */
+    width: 100%; /* Set width to 100% */
     max-width: 750px; /* Limit the max width */
     margin: 0 auto;
     margin-bottom: 10px;
