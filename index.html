@@ -264,7 +264,7 @@
 
       <div class="columns is-centered">
         <div class="column is-full-width">
-            <h4 class="title is-3">• Evaluation</h4>
+            <h4 class="title is-3">• Demo</h4>
             <div class="container is-max-desktop">
               <div class="hero-body">
                 <center>
@@ -320,7 +320,7 @@
         </div>
       </div>
 
-        <!-- Visualiazation -->
+      <!-- Online Demo Section -->
       <div class="columns is-centered">
         <div class="column is-full-width">
             <h4 class="title is-3">• Online Demo</h4>
@@ -328,26 +328,40 @@
               <form id="inferenceForm">
                 <label for="inputText">Enter a sentence:</label><br>
                 <textarea id="inputText" rows="4" cols="50" placeholder="Your sentence here..."></textarea><br><br>
-                <input type="submit" value="Classify">
+                <input type="submit" value="Classify" class="button is-dark is-medium">
               </form>
+
+              <!-- Loading indicator -->
+              <div id="loading" style="display: none;">
+                <p>Loading... please wait.</p>
+              </div>
 
               <!-- Output display -->
               <div id="result">
                 <h3>Result:</h3>
                 <p id="output"></p>
               </div>
+            </div>
+          </div>
 
-              <script>
-                // Handle form submission
-                document.getElementById("inferenceForm").addEventListener("submit", async function(event) {
-                    event.preventDefault();  // Prevent page reload
+          <script>
+            // Handle form submission
+            document.getElementById("inferenceForm").addEventListener("submit", async function(event) {
+                event.preventDefault();  // Prevent page reload
 
-                    const sentence = document.getElementById("inputText").value;
-                    if (sentence === "") {
-                        alert("Please enter a sentence.");
-                        return;
-                    }
+                const sentence = document.getElementById("inputText").value;
+                if (sentence === "") {
+                    alert("Please enter a sentence.");
+                    return;
+                }
 
+                // Display loading indicator
+                document.getElementById("loading").style.display = "block";
+
+                // Clear previous output
+                document.getElementById("output").textContent = "";
+
+                try {
                     // Send the request to your endpoint
                     const response = await fetch("https://d43yv1p4zw5qasjv.us-east-1.aws.endpoints.huggingface.cloud", {
                         method: "POST",  // Assuming the endpoint requires POST method
@@ -363,10 +377,28 @@
                     // Parse the response
                     const data = await response.json();
 
-                    // Display the result
-                    document.getElementById("output").textContent = JSON.stringify(data, null, 2);
-                });
-              </script>
+                    // Hide the loading indicator
+                    document.getElementById("loading").style.display = "none";
+
+                    // Format and display the result
+                    if (Array.isArray(data)) {
+                        let outputHTML = "<table class='table is-striped'>";
+                        outputHTML += "<thead><tr><th>Label</th><th>Score</th></tr></thead><tbody>";
+                        data.forEach(item => {
+                            outputHTML += `<tr><td>${item.label}</td><td>${item.score.toFixed(6)}</td></tr>`;
+                        });
+                        outputHTML += "</tbody></table>";
+                        document.getElementById("output").innerHTML = outputHTML;
+                    } else {
+                        document.getElementById("output").textContent = "Unexpected result format.";
+                    }
+                } catch (error) {
+                    document.getElementById("loading").style.display = "none";
+                    document.getElementById("output").textContent = "An error occurred: " + error.message;
+                }
+            });
+          </script>
+
         </div>
       </div>
 
