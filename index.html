@@ -387,7 +387,7 @@
   <section class="section">
     <div class="container">
       <div class="columns is-centered">
-        <div class="column is-half"> <!-- Adjust to control column size -->
+        <div class="column is-half">
           <div class="form-container">
             <h2 class="title is-4">Text Classification</h2>
 
@@ -397,10 +397,17 @@
               <button type="submit" class="compute-button">Compute</button>
             </form>
 
+            <!-- Loading animation -->
+            <div class="loading" id="loading">
+              <img src="https://i.gifer.com/YCZH.gif" alt="Loading..." width="50" />
+            </div>
+
             <!-- Output display -->
             <div id="result">
               <h3>Result:</h3>
-              <p id="output"></p>
+              <table class="result-table" id="resultTable">
+                <!-- Table will be filled dynamically -->
+              </table>
             </div>
           </div>
         </div>
@@ -419,9 +426,10 @@
             return;
         }
 
-        // Clear previous output
-        document.getElementById("output").textContent = "";
+        // Clear previous output and show loading
+        document.getElementById("resultTable").innerHTML = "";
         document.getElementById("result").style.display = "none";
+        document.getElementById("loading").style.display = "block";
 
         try {
             // Send the request to your endpoint
@@ -439,11 +447,26 @@
             // Parse the response
             const data = await response.json();
 
-            // Display the result
-            document.getElementById("output").textContent = JSON.stringify(data, null, 2);
-            document.getElementById("result").style.display = "block";
+            // Hide the loading animation
+            document.getElementById("loading").style.display = "none";
+
+            // Format and display the result
+            const resultTable = document.getElementById("resultTable");
+            if (Array.isArray(data)) {
+                let tableContent = "<tr><th>Label</th><th>Score</th></tr>";
+                data.forEach(item => {
+                    tableContent += `<tr><td>${item.label}</td><td>${item.score.toFixed(6)}</td></tr>`;
+                });
+                resultTable.innerHTML = tableContent;
+                document.getElementById("result").style.display = "block";
+            } else {
+                resultTable.innerHTML = "<tr><td>Unexpected result format.</td></tr>";
+            }
+
         } catch (error) {
-            document.getElementById("output").textContent = "An error occurred: " + error.message;
+            // Hide the loading animation and display the error
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("resultTable").innerHTML = `<tr><td>An error occurred: ${error.message}</td></tr>`;
             document.getElementById("result").style.display = "block";
         }
     });
