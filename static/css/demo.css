@@ -1,12 +1,12 @@
 .form-container {
-    background-color: rgb(234, 233, 224);
+    background-color: rgb(255, 255, 255);
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%; /* Set width to 100% */
     max-width: 750px; /* Limit the max width */
     margin: 0 auto;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
 
   /* Style for the input textarea */
@@ -16,7 +16,7 @@
     padding: 10px;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
-    font-size: 17px;
+    font-size: 20px;
     color: #333;
     box-sizing: border-box;
     outline: none;
@@ -46,15 +46,16 @@
         pointer-events: none; /* Disable button while loading */
     }
 
-    /* Ensure spinner is perfectly centered */
+    /* 确保 spinner 旋转时位置保持稳定 */
     .compute-button.loading::after {
         content: '';
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
         width: 20px;
         height: 20px;
+        margin-top: -10px; /* 调整到水平居中 */
+        margin-left: -10px; /* 调整到垂直居中 */
         border: 3px solid rgba(0, 0, 0, 0.1);
         border-radius: 50%;
         border-top-color: #333;
@@ -67,6 +68,7 @@
         transform: rotate(360deg);
     }
     }
+
 
 
   /* Style for the output display */
@@ -96,7 +98,7 @@
   }
   
   .progress-score {
-    width: 50px; /* 进度条数字的固定宽度 */
+    width: 50px;
     text-align: right;
     font-size: 14px;
   }
