@@ -35,7 +35,7 @@
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-      width: 100%;
+      width: 300px;
     }
 
     /* Style for the input textarea */
@@ -67,51 +67,39 @@
       font-size: 16px;
       cursor: pointer;
       width: 100%;
-      position: relative;
     }
 
-    /* Spinner inside button */
-    .compute-button.loading::after {
-      content: '';
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      border-top-color: transparent;
-      animation: spin 1s linear infinite;
+    .compute-button:disabled {
+      background-color: #c5d9f3;
     }
 
-    /* Loading spinner animation */
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* Style for the output display */
-    #result {
-      margin-top: 20px;
-      padding: 15px;
-      display: none;
-    }
-
-    /* Progress bar styling */
-    .progress-container {
+    /* Style for progress bars */
+    .progress-bar {
+      background-color: #f3f3f3;
+      border-radius: 4px;
+      height: 10px;
       margin-top: 10px;
     }
 
-    .progress-label {
-      font-size: 14px;
-      margin-bottom: 5px;
+    .progress-bar-inner {
+      height: 10px;
+      border-radius: 4px;
     }
 
-    .progress {
-      background-color: #f4f4f4;
-      border-radius: 8px;
+    /* Color for the benign and injection progress bars */
+    .benign-bar {
+      background-color: #c39bd3;
+    }
+
+    .injection-bar {
+      background-color: #85c1e9;
+    }
+
+    /* Label and score alignment */
+    .label-score {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
     }
   </style>
 
@@ -215,14 +203,14 @@
             Prompt injection attacks pose a critical threat to large language models (LLMs), enabling goal hijacking and data leakage. Prompt guard models, though effective in defense, suffer from over-defense—falsely flagging benign inputs as malicious due to trigger word bias. To address this issue, we introduce NotInject, an evaluation dataset that systematically measures over-defense across various prompt guard models. NotInject contains 339 benign samples enriched with trigger words common in prompt injection attacks, enabling fine-grained evaluation. Our results show that state-of-the-art models suffer from over-defense issues, with accuracy dropping close to random guessing levels (60%). To mitigate this, we propose InjecGuard, a novel prompt guard model that incorporates a new training strategy, Mitigating Over-defense for Free (MOF), which significantly reduces the bias on trigger words. InjecGuard demonstrates state-of-the-art performance on diverse benchmarks including NotInject, surpassing the existing best model by 30.8%, offering a robust and open-source solution for detecting prompt injection attacks.
           </p>
         </div>
-        <img class="columns is-centered has-text-centered" src="./static/images/performance.png" alt="Teaser" width="75%"
+        <!-- <img class="columns is-centered has-text-centered" src="./static/images/performance.png" alt="Teaser" width="75%"
         style="margin:0 auto">
         <br>
         <figcaption>
             <p style="text-align: center; color: #061E61;">
                 <b>Figure 1:</b> Comparison on 3 dimensions of benign, malicious, and over-defense accuracy.
             </p>
-        </figcaption>
+        </figcaption> -->
       </div>
     </div>
   </div>
@@ -230,115 +218,6 @@
 <!-- End paper abstract -->
 
 
-  <!-- Main container -->
-  <section class="section">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-half">
-          <div class="form-container">
-            <h2 class="title is-4">Online Demo</h2>
-
-            <!-- Input form -->
-            <form id="inferenceForm">
-              <textarea id="inputText" class="input-text" placeholder="Your sentence here..."></textarea>
-              <button type="submit" class="compute-button">Compute</button>
-            </form>
-
-            <!-- Loading animation in the button -->
-            <div id="spinner" style="display: none; margin-top: 10px;">
-              <button class="button is-loading is-info is-fullwidth">Loading</button>
-            </div>
-
-            <!-- Output display -->
-            <div id="result" style="display: none;">
-              <h3>Result:</h3>
-              <div id="output"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // Handle form submission
-    document.getElementById("inferenceForm").addEventListener("submit", async function(event) {
-        event.preventDefault();  // Prevent page reload
-
-        const sentence = document.getElementById("inputText").value;
-        if (sentence === "") {
-            alert("Please enter a sentence.");
-            return;
-        }
-
-        // Disable the button and show loading spinner
-        const button = document.querySelector(".compute-button");
-        button.disabled = true;
-        document.getElementById("spinner").style.display = "block";
-        button.textContent = "Processing...";
-
-        try {
-            // Send the request to your endpoint
-            const response = await fetch("https://d43yv1p4zw5qasjv.us-east-1.aws.endpoints.huggingface.cloud", {
-                method: "POST",  // Assuming the endpoint requires POST method
-                headers: { 
-                  "Accept" : "application/json",
-                  "Content-Type": "application/json" 
-                },
-                body: JSON.stringify({
-                    "inputs": sentence
-                })
-            });
-
-            // Parse the response
-            const data = await response.json();
-
-            // Hide the loading spinner
-            document.getElementById("spinner").style.display = "none";
-            button.disabled = false;
-            button.textContent = "Compute";
-
-            // Clear any previous output
-            const outputDiv = document.getElementById("output");
-            outputDiv.innerHTML = "";
-            document.getElementById("result").style.display = "block";
-
-            // Display progress bars
-            if (Array.isArray(data)) {
-                data.forEach(item => {
-                    const label = item.label;
-                    const score = item.score.toFixed(3);
-
-                    // Create label and score display
-                    const labelScore = document.createElement("div");
-                    labelScore.className = "label-score";
-                    labelScore.innerHTML = `<span>${label}</span><span>${score}</span>`;
-
-                    // Create progress bar
-                    const progressBar = document.createElement("div");
-                    progressBar.className = "progress-bar";
-
-                    const progressBarInner = document.createElement("div");
-                    progressBarInner.className = `${label}-bar progress-bar-inner`;
-                    progressBarInner.style.width = `${score * 100}%`;
-
-                    progressBar.appendChild(progressBarInner);
-
-                    // Append to the output
-                    outputDiv.appendChild(labelScore);
-                    outputDiv.appendChild(progressBar);
-                });
-            }
-
-        } catch (error) {
-            // Hide the loading spinner and display the error
-            document.getElementById("spinner").style.display = "none";
-            button.disabled = false;
-            button.textContent = "Compute";
-            alert("An error occurred: " + error.message);
-        }
-    });
-  </script>
 
 <section class="section">
   <div class="container is-max-desktop">
