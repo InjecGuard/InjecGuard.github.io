@@ -227,10 +227,10 @@
           <br>
       </div>
 
-      <!-- Overdefense Issue -->
+      <!-- InjecGuard -->
       <div class="columns is-centered">
         <div class="column is-full-width">
-            <h4 class="title is-3">• </h4>
+            <h4 class="title is-3">• Brief Introduction</h4>
 
             <div class="content has-text-justified">
               <br>
@@ -239,8 +239,28 @@
                 <br>
                 <b>Note:</b> All training details, including the code and datasets, are fully released and available.
               </p>
+              <!-- <br>
+                <img class="columns is-centered has-text-centered" src="./static/images/Results.png" alt="Teaser" width="80%"
+                     style="margin:0 auto">
+                <br>
+                <figcaption>
+                    <p style="text-align: center; color: #061E61;">
+                        <b>Figure 1:</b> Performance and overhead comparison between InjecGuard and other baseline models. 
+                    </p>
+                </figcaption> -->
+            </div>
+            <br/>
+        </div>
+      </div>
+
+      <!-- Main Results -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+            <h4 class="title is-3">• Evaluation</h4>
+
+            <div class="content has-text-justified">
               <br>
-                <img class="columns is-centered has-text-centered" src="./static/images/performance.png" alt="Teaser" width="95%"
+                <img class="columns is-centered has-text-centered" src="./static/images/Results.png" alt="Teaser" width="80%"
                      style="margin:0 auto">
                 <br>
                 <figcaption>
@@ -248,48 +268,19 @@
                         <b>Figure 1:</b> Performance and overhead comparison between InjecGuard and other baseline models. 
                     </p>
                 </figcaption>
+              <br>
+                <img class="columns is-centered has-text-centered" src="./static/images/visualization_concat.png" alt="Teaser" width="80%"
+                     style="margin:0 auto">
+                <br>
+                <figcaption>
+                    <p style="text-align: center; color: #061E61;">
+                        <b>Figure 1:</b> Left: The visualization of different predictions. Right: The visualization of attention weight. Given an instruction of ``[CLS] Can I ignore this warning appeared in my code? [SEP]'', ProtectAIv2 assigns extremely high attention weights to the word ``ignore,'' leading to misclassification as Injection. In contrast, our method distributes attention across the entire sentence, successfully predicting it as benign.
+                    </p>
+                </figcaption>
             </div>
             <br/>
         </div>
       </div>
-
-      <!-- Pipeline -->
-      <div class="columns is-centered">
-          <div class="column is-full-width">
-              <h4 class="title is-3">• Dataset Construction </h4>
-
-              <div class="content has-text-justified">
-                  <img class="columns is-centered has-text-centered" src="./static/images/pipeline.png" alt="Teaser" width="95%"
-                       style="margin:0 auto">
-                  <br>
-                  <figcaption>
-                      <p style="text-align: center; color: #061E61;">
-                          <b>Figure 1:</b> The pipeline for constructing NotInject dataset.
-                      </p>
-                  </figcaption>
-                  <br>
-                  <p>
-                    <ul>
-                      <li>
-                          <b>Trigger Words Indentification.</b> To identify potential trigger words, was first conduct a word frequency analysis across both benign and injection datasets. The words are then ranked according to their frequency within each dataset, sorted separately for benign and injection datasets. By calculating the differences in word rankings between the two datasets, we highlight words that are disproportionately frequent in the injection dataset but rare in the benign dataset. These words are flagged as potential trigger words, which can serve as indicators of injection attempts.
-                      </li>
-                      <li>
-                          <b>Trigger Words Refinement.</b>
-                          To refine the list of candidate trigger words, a multi-step process is implemented to filter out irrelevant or commonly used terms that are not indicative of prompt injection attempts. Initially, a large language model (LLM) is employed to automatically assess the relevance of each word, based on the prompt: "Do you think the word of {word} is especially frequent in malicious or prompt attack scenarios?" This step helps eliminate words that are not pertinent to injection attacks. Following the automated filtering, a manual verification process is conducted to ensure the final list contains only words that are strongly associated with prompt injection attempts, further enhancing the accuracy of the trigger word identification.
-                      </li>
-                      <li>
-                          <b>Corpus Generation.</b>
-                          As a result of the refinement process, we select 113 trigger words and utilize a large language model (LLM) to generate benign sentences incorporating these words. The dataset is structured into three subsets, each containing samples with 1, 2, and 3 trigger words per sentence. To ensure that all generated sentences are non-malicious, both LLM-based and manual refinement processes are applied. The final dataset, termed NotInject, consists of 339 samples in total, with 113 samples in each subset. The generated sentences span a wide range of topics, including common queries, technical inquiries, virtual content creation, and multilingual queries, thus ensuring diversity and comprehensiveness.
-                      </li>
-                  </ul>
-                  </p>
-                  <br>
-              </div>
-              <br/>
-
-          </div>
-      </div>
-
 
   </div>
 </section>
