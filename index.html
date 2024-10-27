@@ -163,11 +163,13 @@
           <div class="progress-container" id="benignContainer">
             <div class="progress-label">Benign</div>
             <progress class="progress is-info" id="benignProgress" value="0" max="1"></progress>
+            <div class="progress-score" id="benignScore">0.000</div>
           </div>
 
           <div class="progress-container" id="injectionContainer">
             <div class="progress-label">Injection</div>
             <progress class="progress is-danger" id="injectionProgress" value="0" max="1"></progress>
+            <div class="progress-score" id="injectionScore">0.000</div>
           </div>
         </div>
       </div>
@@ -190,6 +192,8 @@
         // Clear previous output and show loading
         document.getElementById("benignProgress").value = 0;
         document.getElementById("injectionProgress").value = 0;
+        document.getElementById("benignScore").innerText = "0.000";
+        document.getElementById("injectionScore").innerText = "0.000";
         document.getElementById("result").style.display = "none";
         computeButton.classList.add("loading"); // Add loading spinner
 
@@ -223,9 +227,11 @@
                 }
             });
 
-            // Update progress bars
+            // Update progress bars and score text
             document.getElementById("benignProgress").value = benignScore;
+            document.getElementById("benignScore").innerText = benignScore.toFixed(3);
             document.getElementById("injectionProgress").value = injectionScore;
+            document.getElementById("injectionScore").innerText = injectionScore.toFixed(3);
 
             // Display the result section
             document.getElementById("result").style.display = "block";

@@ -1,92 +1,103 @@
 /* Styling the form container */
 .form-container {
-  background-color: white;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  width: 600px;
-  margin: 0 auto;
-  margin-bottom: 40px;
-}
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    }
 
-/* Style for the input textarea */
-.input-text {
-  width: 100%;
-  height: 100px;
-  padding: 15px;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 18px;
-  color: #333;
-  box-sizing: border-box;
-  outline: none;
-  transition: border-color 0.2s ease-in-out;
-}
+    /* Style for the input textarea */
+    .input-text {
+    width: 100%;
+    height: 100px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 18px;
+    color: #333;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+    }
 
-.input-text:focus {
-  border-color: #E0E0E0;
-}
+    .input-text:focus {
+    border-color: #E0E0E0;
+    }
 
-/* Style for the compute button */
-.compute-button {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #E0E0E0;
-  color: #333;
-  border: none;
-  border-radius: 6px;
-  font-size: 18px;
-  cursor: pointer;
-  width: 100%;
-  position: relative;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    /* Style for the compute button */
+    .compute-button {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #E0E0E0;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
 
-/* Spinner inside button */
-.compute-button.loading {
-  position: relative;
-  pointer-events: none; /* Disable button while loading */
-}
+    /* Spinner inside button */
+    .compute-button.loading {
+    position: relative;
+    pointer-events: none; /* Disable button while loading */
+    }
 
-.compute-button.loading::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  border-top-color: #333;
-  animation: spin 1s linear infinite;
-}
+    .compute-button.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #333;
+    animation: spin 1s linear infinite;
+    }
 
-/* Spinner keyframe */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
+    /* Spinner keyframe */
+    @keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+    }
 
-/* Style for the output display */
-#result {
-  margin-top: 20px;
-  padding: 15px;
-  display: none;
-}
+    /* Style for the output display */
+    #result {
+    margin-top: 20px;
+    padding: 15px;
+    display: none;
+    }
 
-/* Progress bar styling */
-.progress-container {
-  margin-top: 10px;
-}
+    /* Progress bar styling */
+    .progress-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    }
 
-.progress-label {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
+    .progress-label {
+    font-size: 18px;
+    margin-bottom: 5px;
+    width: 100px;
+    }
 
-.progress {
-  background-color: #f4f4f4;
-  border-radius: 8px;
-}
+    .progress {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    flex-grow: 1;
+    margin-right: 10px;
+    }
+
+    .progress-score {
+    width: 50px;
+    text-align: right;
+    font-size: 16px;
+    }
