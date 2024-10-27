@@ -78,29 +78,30 @@
     display: none;
   }
 
-  .progress-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    width: 100%; /* 确保 progress-container 占满宽度 */
-}
+    .progress-container {
+        display: flex;
+        justify-content: flex-start; /* 保持左侧对齐 */
+        align-items: center;
+        margin-top: 10px;
+        width: 100%; /* 确保 progress-container 占满宽度 */
+    }
 
-.progress-label {
-    font-size: 16px;
-    width: 100px;
-    text-align: left; /* 确保标签左对齐 */
-}
+    .progress-label {
+        font-size: 16px;
+        width: 100px;
+        text-align: left; /* 确保标签左对齐 */
+    }
 
-.progress {
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    flex-grow: 2; /* 增加弹性，确保进度条占据更多空间 */
-    margin-right: 10px;
-}
+    .progress {
+        background-color: #f4f4f4;
+        border-radius: 8px;
+        flex-grow: 2; /* 确保进度条占据更多空间 */
+        margin-right: 10px;
+        height: 10px; /* 设置进度条高度 */
+    }
 
-.progress-score {
-    width: 60px; /* 为分数区域预留足够的宽度 */
-    text-align: right;
-    font-size: 14px;
-}
+    .progress-score {
+        width: 50px; /* 为分数预留足够宽度 */
+        text-align: right;
+        font-size: 14px;
+    }
