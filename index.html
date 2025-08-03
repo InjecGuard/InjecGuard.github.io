@@ -5,7 +5,7 @@
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
   <meta name="description" content="The first fully open-sourced safeguard model against prompt injection attacks with state-of-the-art performance and non-over-defense characteristics.">
-  <meta property="og:title" content="InjecGuard: Benchmarking and Mitigating Over-defense in Prompt Injection Guardrail Models"/>
+  <meta property="og:title" content="PIGuard: Prompt Injection Guardrail via Mitigating Overdefense for Free"/>
   <meta property="og:description" content="The first fully open-sourced safeguard model against prompt injection attacks with state-of-the-art performance and non-over-defense characteristics."/>
   <meta property="og:url" content="https://injecguard.github.io/"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
@@ -14,8 +14,8 @@
   <meta property="og:image:height" content="600"/>
 
 
-  <meta name="twitter:title" content="InjecGuard: Benchmarking and Mitigating Over-defense in Prompt Injection Guardrail Models">
-  <meta name="twitter:description" content="InjecGuard: Benchmarking and Mitigating Over-defense in Prompt Injection Guardrail Models">
+  <meta name="twitter:title" content="PIGuard: Prompt Injection Guardrail via Mitigating Overdefense for Free">
+  <meta name="twitter:description" content="PIGuard: Prompt Injection Guardrail via Mitigating Overdefense for Free">
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
   <meta name="twitter:image" content="https://injecguard.github.io/static/images/figure_performance_resize.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="static/css/demo.css">
 
 
-  <title>InjecGuard: Benchmarking and Mitigating Over-defense in Prompt Injection Guardrail Models</title>
+  <title>PIGuard: Prompt Injection Guardrail via Mitigating Overdefense for Free</title>
   <link rel="icon" type="image/x-icon" href="static/images/guard.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -58,7 +58,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">InjecGuard: Benchmarking and Mitigating Over-defense in Prompt Injection Guardrail Models</h1>
+            <h1 class="title is-1 publication-title">PIGuard: Prompt Injection Guardrail via Mitigating Overdefense for Free</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
@@ -92,7 +92,7 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/leolee99/InjecGuard" target="_blank"
+                    <a href="https://github.com/leolee99/PIGuard" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -103,7 +103,7 @@
 
                   <!-- Model link -->
                   <span class="link-block">
-                    <a href="https://huggingface.co/leolee99/InjecGuard" target="_blank"
+                    <a href="https://huggingface.co/leolee99/PIGuard" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-hive"></i>
@@ -139,7 +139,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Prompt injection attacks pose a critical threat to large language models (LLMs), enabling goal hijacking and data leakage. Prompt guard models, though effective in defense, suffer from over-defense—falsely flagging benign inputs as malicious due to trigger word bias. To address this issue, we introduce NotInject, an evaluation dataset that systematically measures over-defense across various prompt guard models. NotInject contains 339 benign samples enriched with trigger words common in prompt injection attacks, enabling fine-grained evaluation. Our results show that state-of-the-art models suffer from over-defense issues, with accuracy dropping close to random guessing levels (60%). To mitigate this, we propose InjecGuard, a novel prompt guard model that incorporates a new training strategy, Mitigating Over-defense for Free (MOF), which significantly reduces the bias on trigger words. InjecGuard demonstrates state-of-the-art performance on diverse benchmarks including NotInject, surpassing the existing best model by 30.8%, offering a robust and open-source solution for detecting prompt injection attacks.
+            Prompt injection attacks pose a critical threat to large language models (LLMs), enabling goal hijacking and data leakage. Prompt guard models, though effective in defense, suffer from over-defense—falsely flagging benign inputs as malicious due to trigger word bias. To address this issue, we introduce NotInject, an evaluation dataset that systematically measures over-defense across various prompt guard models. NotInject contains 339 benign samples enriched with trigger words common in prompt injection attacks, enabling fine-grained evaluation. Our results show that state-of-the-art models suffer from over-defense issues, with accuracy dropping close to random guessing levels (60%). To mitigate this, we propose PIGuard, a novel prompt guard model that incorporates a new training strategy, Mitigating Over-defense for Free (MOF), which significantly reduces the bias on trigger words. PIGuard demonstrates state-of-the-art performance on diverse benchmarks including NotInject, surpassing the existing best model by 30.8%, offering a robust and open-source solution for detecting prompt injection attacks.
           </p>
         </div>
       </div>
@@ -166,7 +166,7 @@
   <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
-        <h2 class="title is-2">Demos of InjecGuard</h2>
+        <h2 class="title is-2">Demos of PIGuard</h2>
         <br>
       </div>
       <!-- <img class="columns is-centered has-text-centered" src="./static/images/figure_performance.png" alt="Teaser" width="80%"
@@ -185,12 +185,12 @@
           </video>
         </center>
         <h2 class="subtitle has-text-centered">
-          A Demo of InjecGuard. 
+          A Demo of PIGuard. 
         </h2>
       </div>
       <div class="container">
         <div class="form-container">
-          <h2 class="title is-4"><span>&#9889;</span> Online Inference (InjecGuard)</h2> <!-- Reduced title size -->
+          <h2 class="title is-4"><span>&#9889;</span> Online Inference (PIGuard)</h2> <!-- Reduced title size -->
 
           <!-- Input form -->
           <form id="inferenceForm">
@@ -362,11 +362,11 @@
   <div class="container is-max-desktop">
 
       <div class="columns is-centered has-text-centered">
-          <h2 class="title is-2">Injection Guardrail: InjecGuard</h2>
+          <h2 class="title is-2">Injection Guardrail: PIGuard</h2>
           <br>
       </div>
 
-      <!-- InjecGuard -->
+      <!-- PIGuard -->
       <div class="columns is-centered">
         <div class="column is-full-width">
             <h4 class="title is-3">• Brief Introduction</h4>
@@ -374,7 +374,7 @@
             <div class="content has-text-justified">
               <br>
               <p>
-                <b>InjecGuard</b> is a lightweight model designed to defend against prompt injection attacks. It delivers strong performance across benign, malicious, and over-defense accuracy metrics, surpassing existing guard models such as PromptGuard, ProtectAIv2, and LakeraAI. Despite its compact size, with model parameters of only 184MB, InjecGuard achieves competitive performance comparable to advanced commercial large language models like GPT-4.
+                <b>PIGuard</b> is a lightweight model designed to defend against prompt injection attacks. It delivers strong performance across benign, malicious, and over-defense accuracy metrics, surpassing existing guard models such as PromptGuard, ProtectAIv2, and LakeraAI. Despite its compact size, with model parameters of only 184MB, PIGuard achieves competitive performance comparable to advanced commercial large language models like GPT-4.
                 <br>
                 <b>Note:</b> All training details, including the code and datasets, are fully released and available.
               </p>
@@ -396,7 +396,7 @@
                 <br>
                 <figcaption>
                     <p style="text-align: center; color: #000000;">
-                        <b>Figure 4:</b> Performance and overhead comparison between InjecGuard and other baseline models. 
+                        <b>Figure 4:</b> Performance and overhead comparison between PIGuard and other baseline models. 
                     </p>
                 </figcaption>
             </div>
@@ -430,11 +430,14 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@articles{InjecGuard,
-title={InjecGuard: Benchmarking and Mitigating Over-defense in Prompt Injection Guardrail Models},
-author={Hao Li, Xiaogeng Liu},
-journal = {arXiv preprint arXiv:2410.22770},
-year={2024}
+      <pre><code>@articles{PIGuard,
+title={PIGuard: Prompt Injection Guardrail via Mitigating Overdefense for Free},
+author={Hao Li and
+        Xiaogeng Liu and
+        Ning Zhang and
+        Chaowei Xiao},
+journal = {ACL},
+year={2025}
 }
 </code></pre>
   </div>
